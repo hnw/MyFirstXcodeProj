@@ -7,9 +7,7 @@
 //
 
 #include "myexec.h"
-#include <stdio.h>
 #include <string.h>
-#include <spawn.h>
 
 void exec_ls(void)
 {
@@ -25,4 +23,14 @@ void exec_ls(void)
     } else {
         printf("posix_spawn: %s\n", strerror(status));
     }
+}
+int my_posix_spawn(pid_t *restrict pid, const char *restrict path, const posix_spawn_file_actions_t *file_actions, const posix_spawnattr_t *restrict attrp, char *const argv[restrict], char *const envp[restrict])
+{
+    printf("%s\n", path);
+    printf("%s\n", argv[0]);
+    printf("%s\n", argv[1]);
+    printf("%s\n", argv[2]);
+
+    int status = posix_spawn(pid, path, file_actions, attrp, argv, envp);
+    return status;
 }
