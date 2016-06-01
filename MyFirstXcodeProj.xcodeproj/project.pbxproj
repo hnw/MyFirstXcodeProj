@@ -14,6 +14,7 @@
 		553F7F4C1CFDCE40005D90BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553F7F4A1CFDCE40005D90BE /* LaunchScreen.storyboard */; };
 		553F7F571CFDCE40005D90BE /* MyFirstXcodeProjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F7F561CFDCE40005D90BE /* MyFirstXcodeProjTests.swift */; };
 		553F7F621CFDCE40005D90BE /* MyFirstXcodeProjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F7F611CFDCE40005D90BE /* MyFirstXcodeProjUITests.swift */; };
+		FE07C33A1CFE5DA8003B5C03 /* myexec.c in Sources */ = {isa = PBXBuildFile; fileRef = FE07C3381CFE5DA8003B5C03 /* myexec.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,9 @@
 		553F7F5D1CFDCE40005D90BE /* MyFirstXcodeProjUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFirstXcodeProjUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		553F7F611CFDCE40005D90BE /* MyFirstXcodeProjUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstXcodeProjUITests.swift; sourceTree = "<group>"; };
 		553F7F631CFDCE40005D90BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE07C3371CFE5DA8003B5C03 /* MyFirstXcodeProj-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyFirstXcodeProj-Bridging-Header.h"; sourceTree = "<group>"; };
+		FE07C3381CFE5DA8003B5C03 /* myexec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = myexec.c; sourceTree = "<group>"; };
+		FE07C3391CFE5DA8003B5C03 /* myexec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myexec.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,9 @@
 				553F7F481CFDCE40005D90BE /* Assets.xcassets */,
 				553F7F4A1CFDCE40005D90BE /* LaunchScreen.storyboard */,
 				553F7F4D1CFDCE40005D90BE /* Info.plist */,
+				FE07C3381CFE5DA8003B5C03 /* myexec.c */,
+				FE07C3391CFE5DA8003B5C03 /* myexec.h */,
+				FE07C3371CFE5DA8003B5C03 /* MyFirstXcodeProj-Bridging-Header.h */,
 			);
 			path = MyFirstXcodeProj;
 			sourceTree = "<group>";
@@ -258,6 +265,7 @@
 			files = (
 				553F7F441CFDCE40005D90BE /* ViewController.swift in Sources */,
 				553F7F421CFDCE40005D90BE /* AppDelegate.swift in Sources */,
+				FE07C33A1CFE5DA8003B5C03 /* myexec.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,10 +407,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MyFirstXcodeProj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hnw.MyFirstXcodeProj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyFirstXcodeProj/MyFirstXcodeProj-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -410,10 +421,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MyFirstXcodeProj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hnw.MyFirstXcodeProj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyFirstXcodeProj/MyFirstXcodeProj-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -482,6 +495,7 @@
 				553F7F681CFDCE40005D90BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		553F7F691CFDCE40005D90BE /* Build configuration list for PBXNativeTarget "MyFirstXcodeProjTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +504,7 @@
 				553F7F6B1CFDCE40005D90BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		553F7F6C1CFDCE40005D90BE /* Build configuration list for PBXNativeTarget "MyFirstXcodeProjUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +513,7 @@
 				553F7F6E1CFDCE40005D90BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

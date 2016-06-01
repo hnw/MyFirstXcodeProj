@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
 
@@ -22,8 +23,8 @@ class ViewController: UIViewController {
 
     @IBAction func tapButton(sender: UIButton) {
         infoField.text = "Tapped!"
+        exec_ls()
     }
 
     @IBOutlet weak var infoField: UITextField!
 }
-
