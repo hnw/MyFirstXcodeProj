@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import WhoisCmd
+import DfCmd
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -24,11 +25,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
-        
-        let cmd = WhoisCmd(textField.text!)
-        cmd.exec()
-        
-        outputField.text = cmd.cout + cmd.cerr + "\n\nreturn_code=\(cmd.retval)"
+
+        if let cmdline = textField.text {
+            let cmds = cmdline.componentsSeparatedByString(" ")
+            if cmds[0] == "whois" {
+                let cmd = WhoisCmd(cmds)
+                cmd.exec()
+                outputField.text = cmd.cout + cmd.cerr + "\n\nreturn_code=\(cmd.retval)"
+            } else if cmds[0] == "df" {
+                let cmd = DfCmd(cmds)
+                cmd.exec()
+                outputField.text = cmd.cout + cmd.cerr + "\n\nreturn_code=\(cmd.retval)"
+            } else {
+                outputField.text = "Command not found: \(cmds[0])"
+            }
+        }
 
         return true
     }

@@ -14,6 +14,7 @@
 		553F7F4C1CFDCE40005D90BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 553F7F4A1CFDCE40005D90BE /* LaunchScreen.storyboard */; };
 		553F7F571CFDCE40005D90BE /* MyFirstXcodeProjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F7F561CFDCE40005D90BE /* MyFirstXcodeProjTests.swift */; };
 		553F7F621CFDCE40005D90BE /* MyFirstXcodeProjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F7F611CFDCE40005D90BE /* MyFirstXcodeProjUITests.swift */; };
+		55C62E371D2BB082002337DF /* DfCmd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C62E361D2BB082002337DF /* DfCmd.framework */; };
 		FE07C33A1CFE5DA8003B5C03 /* myexec.c in Sources */ = {isa = PBXBuildFile; fileRef = FE07C3381CFE5DA8003B5C03 /* myexec.c */; };
 		FE16CF4F1D2AB73600FCC41B /* WhoisCmd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE16CF4E1D2AB73600FCC41B /* WhoisCmd.framework */; };
 		FE16CF521D2AB83800FCC41B /* CStringArray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE16CF511D2AB83800FCC41B /* CStringArray.framework */; };
@@ -50,6 +51,7 @@
 		553F7F5D1CFDCE40005D90BE /* MyFirstXcodeProjUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFirstXcodeProjUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		553F7F611CFDCE40005D90BE /* MyFirstXcodeProjUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstXcodeProjUITests.swift; sourceTree = "<group>"; };
 		553F7F631CFDCE40005D90BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55C62E361D2BB082002337DF /* DfCmd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DfCmd.framework; path = Carthage/Build/iOS/DfCmd.framework; sourceTree = "<group>"; };
 		FE07C3371CFE5DA8003B5C03 /* MyFirstXcodeProj-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyFirstXcodeProj-Bridging-Header.h"; sourceTree = "<group>"; };
 		FE07C3381CFE5DA8003B5C03 /* myexec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = myexec.c; sourceTree = "<group>"; };
 		FE07C3391CFE5DA8003B5C03 /* myexec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myexec.h; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C62E371D2BB082002337DF /* DfCmd.framework in Frameworks */,
 				FE16CF521D2AB83800FCC41B /* CStringArray.framework in Frameworks */,
 				FE16CF4F1D2AB73600FCC41B /* WhoisCmd.framework in Frameworks */,
 			);
@@ -87,6 +90,7 @@
 		553F7F351CFDCE40005D90BE = {
 			isa = PBXGroup;
 			children = (
+				55C62E361D2BB082002337DF /* DfCmd.framework */,
 				FE16CF511D2AB83800FCC41B /* CStringArray.framework */,
 				FE16CF4E1D2AB73600FCC41B /* WhoisCmd.framework */,
 				553F7F401CFDCE40005D90BE /* MyFirstXcodeProj */,
@@ -209,7 +213,7 @@
 				TargetAttributes = {
 					553F7F3D1CFDCE40005D90BE = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = RT24N5824U;
+						DevelopmentTeam = E79B4MEKMK;
 					};
 					553F7F511CFDCE40005D90BE = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -277,6 +281,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/WhoisCmd.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CStringArray.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DfCmd.framework",
 			);
 			outputPaths = (
 			);
