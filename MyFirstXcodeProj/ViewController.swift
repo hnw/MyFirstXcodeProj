@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import WhoisCmd
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -23,88 +24,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
-        outputField.text="$ "+textField.text!+"\nfoobar"
-        print("hoge")
         
-        let manager = NSFileManager.defaultManager()
-        do {
-            let list = try manager.contentsOfDirectoryAtPath(inputField.text!)
-            for path in list {
-                print(path)
-                do {
-                    let list = try manager.contentsOfDirectoryAtPath(inputField.text!+"/"+path)
-                    for path in list {
-                        print("  "+path)
-                    }
-                } catch let _ {
-                    
-                }
-            }
-            
-        } catch let _ {
-            
-        }
-        inputField.text?.withCString {
-            my_stat($0)
-        }
-/*
-            let buf = UnsafeMutablePointer<stat>.alloc(1);
-            let statusx = stat("/bin/", buf)
-            if (statusx != 0) {
-                print("posix_spawn: " + String.fromCString(strerror(statusx))!)
-             }
- */
-
-
-        let argv = CStringArray(["/Developer/usr/bin/iprofiler", "--help"])
-        //let argv = CStringArray(["/bin/sh", "-c", textField.text!])
-        //let argv = CStringArray([textField.text!])
-        var pid: pid_t = 0
-        var action: posix_spawn_file_actions_t = nil
-        var cout_pipe: [Int32] = [0,0]
-        var cerr_pipe: [Int32] = [0,0]
-        var exit_code: Int32 = 0
+        let cmd = WhoisCmd(textField.text!)
+        cmd.exec()
         
-        pipe(&cout_pipe)
-        pipe(&cerr_pipe)
-	
-        posix_spawn_file_actions_init(&action)
-        posix_spawn_file_actions_addclose(&action, cout_pipe[0]);
-        posix_spawn_file_actions_addclose(&action, cerr_pipe[0]);
-        posix_spawn_file_actions_adddup2(&action, cout_pipe[1], 1);
-        posix_spawn_file_actions_adddup2(&action, cerr_pipe[1], 2);
-        posix_spawn_file_actions_addclose(&action, cout_pipe[1]);
-        posix_spawn_file_actions_addclose(&action, cerr_pipe[1]);
-        
-        let status = posix_spawnp(&pid, argv.pointers[0], &action, nil, argv.pointers, nil)
+        outputField.text = cmd.cout + cmd.cerr + "\n\nreturn_code=\(cmd.retval)"
 
-        print(String(format:"Child pid: %i", pid))
-        if (status != 0) {
-            print("posix_spawn: " + String.fromCString(strerror(status))!)
-        }
-        
-        close(cout_pipe[1]);
-        close(cerr_pipe[1]);
-
-        let buffer_size = 1024;
-        var buffer = [Int8](count: buffer_size+1, repeatedValue: 0)
-
-        var bytes_read = read(cout_pipe[0], &buffer, buffer_size)
-        outputField.text="$ "+textField.text!+"\n"
-        while (bytes_read > 0) {
-            print(String(format:"bytes_read: %i", bytes_read))
-            print(String.fromCString(buffer)!)
-            outputField.text = outputField.text.stringByAppendingString(String.fromCString(buffer)!);
-            bytes_read = read(cout_pipe[0], &buffer, buffer_size)
-        }
-
-        waitpid(pid,&exit_code,0);
-        print(String(format:"exit code: %i", exit_code))
-
-        posix_spawn_file_actions_destroy(&action);
-
-//        print(String.fromCString(x))
-        
         return true
     }
     

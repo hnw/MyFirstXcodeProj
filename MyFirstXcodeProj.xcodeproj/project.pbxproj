@@ -15,6 +15,8 @@
 		553F7F571CFDCE40005D90BE /* MyFirstXcodeProjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F7F561CFDCE40005D90BE /* MyFirstXcodeProjTests.swift */; };
 		553F7F621CFDCE40005D90BE /* MyFirstXcodeProjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F7F611CFDCE40005D90BE /* MyFirstXcodeProjUITests.swift */; };
 		FE07C33A1CFE5DA8003B5C03 /* myexec.c in Sources */ = {isa = PBXBuildFile; fileRef = FE07C3381CFE5DA8003B5C03 /* myexec.c */; };
+		FE16CF4F1D2AB73600FCC41B /* WhoisCmd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE16CF4E1D2AB73600FCC41B /* WhoisCmd.framework */; };
+		FE16CF521D2AB83800FCC41B /* CStringArray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE16CF511D2AB83800FCC41B /* CStringArray.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		FE07C3371CFE5DA8003B5C03 /* MyFirstXcodeProj-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyFirstXcodeProj-Bridging-Header.h"; sourceTree = "<group>"; };
 		FE07C3381CFE5DA8003B5C03 /* myexec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = myexec.c; sourceTree = "<group>"; };
 		FE07C3391CFE5DA8003B5C03 /* myexec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myexec.h; sourceTree = "<group>"; };
+		FE16CF4E1D2AB73600FCC41B /* WhoisCmd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WhoisCmd.framework; path = Carthage/Build/iOS/WhoisCmd.framework; sourceTree = "<group>"; };
+		FE16CF511D2AB83800FCC41B /* CStringArray.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CStringArray.framework; path = Carthage/Build/iOS/CStringArray.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE16CF521D2AB83800FCC41B /* CStringArray.framework in Frameworks */,
+				FE16CF4F1D2AB73600FCC41B /* WhoisCmd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +87,8 @@
 		553F7F351CFDCE40005D90BE = {
 			isa = PBXGroup;
 			children = (
+				FE16CF511D2AB83800FCC41B /* CStringArray.framework */,
+				FE16CF4E1D2AB73600FCC41B /* WhoisCmd.framework */,
 				553F7F401CFDCE40005D90BE /* MyFirstXcodeProj */,
 				553F7F551CFDCE40005D90BE /* MyFirstXcodeProjTests */,
 				553F7F601CFDCE40005D90BE /* MyFirstXcodeProjUITests */,
@@ -142,6 +150,7 @@
 				553F7F3A1CFDCE40005D90BE /* Sources */,
 				553F7F3B1CFDCE40005D90BE /* Frameworks */,
 				553F7F3C1CFDCE40005D90BE /* Resources */,
+				FE16CF501D2AB75700FCC41B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -258,6 +267,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FE16CF501D2AB75700FCC41B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/WhoisCmd.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CStringArray.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		553F7F3A1CFDCE40005D90BE /* Sources */ = {
@@ -411,6 +438,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MyFirstXcodeProj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hnw.MyFirstXcodeProj;
@@ -428,6 +459,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MyFirstXcodeProj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hnw.MyFirstXcodeProj;
